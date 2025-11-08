@@ -26,6 +26,7 @@ export default class ProductDetails {
 
     renderProductDetails() {
         productDetailsTemplate(this.product);
+
     }
 }
 

@@ -1,13 +1,16 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+    const discount =  product.ListPrice - product.FinalPrice;
+    
     return `
     <li class="product-card">
       <a href="product_pages/?products=${product.Id}">
         <img src="${product.Image}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
-        <p class="product-card__price">$${product.FinalPrice}</p>
+        <p class="product-card_price">$${product.FinalPrice}</p>
+        <p class="product-card_discount">You save $${discount}</p>
       </a>
     </li>
     `;
