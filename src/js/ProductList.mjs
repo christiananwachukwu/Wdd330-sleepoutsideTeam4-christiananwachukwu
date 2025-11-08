@@ -9,6 +9,7 @@ function productCardTemplate(product) {
         <img src="${product.Image}" alt="${product.Name}">
         <h2>${product.Brand.Name}</h2>
         <h3>${product.Name}</h3>
+        <p class= product_description>${product.DescriptionHtmlSimple}</p>
         <p class="product-card_price">$${product.FinalPrice}</p>
         <p class="product-card_discount">You save $${discount}</p>
       </a>
@@ -26,8 +27,10 @@ export default class ProductList {
 
     async init() {
         const list = await this.dataSource.getData();
+        console.log("Raw list data:", list);  // <-- Add this line
         this.renderList(list);
     }
+
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
     }

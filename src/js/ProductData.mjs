@@ -9,7 +9,7 @@ function convertToJson(res) {
 export default class ProductData {
   constructor(category) {
     this.category = category;
-    this.path = `..public/json/${category}.json`;
+    this.path = "../json/tents.json";
   }
   getData() {
     return fetch(this.path)
