@@ -1,23 +1,19 @@
-// wrapper for querySelector...returns matching element
-export function qs(selector, parent = document) {
-  return parent.querySelector(selector);
+// src/js/utils.mjs
+export function getLocalStorage(key)  {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : [];
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
 
-// retrieve data from localstorage
-export function getLocalStorage(key) {
-  return JSON.parse(localStorage.getItem(key));
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+    // 1. If 'clear' is true, empty the parent element
+    if (clear) {
+        parentElement.innerHTML = "";
+    }
+ 
+    // 2. Use map to convert the list of objects into an array of HTML strings
+    const htmlStrings = list.map(templateFn);
+ 
+    // 3. Insert the joined HTML string into the parent element
+    parentElement.insertAdjacentHTML(position, htmlStrings.join(''));
 }
-// save data to local storage
-export function setLocalStorage(key, data) {
-  localStorage.setItem(key, JSON.stringify(data));
-}
-// set a listener for both touchend and click
-export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
-    event.preventDefault();
-    callback();
-  });
-  qs(selector).addEventListener("click", callback);
-}
+ 
