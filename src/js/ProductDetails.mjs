@@ -1,50 +1,56 @@
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
-export default class ProductDetails{
-    
-    constructor(productId, dataSource) {
-        this.productId = productId;
-        this.product = {};
-        this.dataSource = dataSource;
-    }
+export default class ProductDetails {
+  constructor(productId, dataSource) {
+    this.productId = productId;
+    this.dataSource = dataSource;
+    this.product = {};
+    this.discountPercentage = 0.2; // 20%
+  }
 
-    async init() {
-        this.product = await this.dataSource.findProductById(this.productId);
+  async init() {
+    this.product = await this.dataSource.findProductById(this.productId);
+    this.renderProductDetails();
+    document
+      .getElementById("addToCart")
+      .addEventListener("click", this.addProductToCart.bind(this));
+  }
 
-        this.renderProductDetails();
-
-        document
-            .getElementById("addToCart")
-            .addEventListener("click", this.addProductToCart.bind(this));
-    }
-
-    addProductToCart(product) {
-    // Get existing items in the cart, or start with an empty array
+  addProductToCart() {
     const cart = getLocalStorage("so-cart") || [];
-
-    // Add the new product to the array
     cart.push(this.product);
-
-    // Save the updated array back to localStorage
     setLocalStorage("so-cart", cart);
-    }
-    
-    renderProductDetails() {
-        productDetailsTemplate(this.product);
-    }
-}
+  }
 
-function productDetailsTemplate(product) {
-    document.querySelector('h2').textContent = product.Brand.Name;
-    document.querySelector('h3').textContent = product.NameWithoutBrand;
+  calculateDiscountedPrice(price) {
+    return price - price * this.discountPercentage;
+  }
 
-    const productImage = document.getElementById('productImage');
-    productImage.src = product.Image;
-    productImage.alt = product.NameWithoutBrand;
+  renderProductDetails() {
+    const product = this.product;
+    const discounted = this.calculateDiscountedPrice(product.FinalPrice);
 
-    document.getElementById('productPrice').textContent = product.FinalPrice;
-    document.getElementById('productColor').textContent = product.Colors[0].ColorName;
-    document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
+    document.getElementById("productBrand").textContent = product.Brand.Name;
+    document.getElementById("productName").textContent = product.NameWithoutBrand;
 
-    document.getElementById('addToCart').dataset.id = product.Id;
+    const img = document.getElementById("productImage");
+    img.src = product.Image;
+    img.alt = product.NameWithoutBrand;
+
+    const original = document.getElementById("originalPrice");
+    original.textContent = `$${product.FinalPrice.toFixed(2)}`;
+    original.style.textDecoration = "line-through";
+
+    const discountedEl = document.getElementById("discountedPrice");
+    discountedEl.textContent = `$${discounted.toFixed(2)}`;
+
+    const badge = document.getElementById("discountBadge");
+    badge.textContent = `${this.discountPercentage * 100}% OFF`;
+
+    document.getElementById("productColor").textContent =
+      product.Colors?.[0]?.ColorName || "N/A";
+    document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
+
+    document.getElementById("addToCart").dataset.id = product.Id;
+  }
 }

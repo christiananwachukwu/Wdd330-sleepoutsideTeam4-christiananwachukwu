@@ -1,10 +1,13 @@
-import { getParam } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
-import productDetails from "./ProductDetails.mjs";
+import ProductData from "./productdata.mjs";
+import ProductDetails from "./productdetails.mjs";
 
+// Extract product ID from URL (?product=880RT)
+const params = new URLSearchParams(window.location.search);
+const productId = params.get("product");
 
+// Load data from tents.json (change if category differs)
 const dataSource = new ProductData("tents");
-const productId = getParam('product');
 
-const product = new productDetails(productId, dataSource);
-product.init();
+// Initialize Product Details page
+const productPage = new ProductDetails(productId, dataSource);
+productPage.init();
