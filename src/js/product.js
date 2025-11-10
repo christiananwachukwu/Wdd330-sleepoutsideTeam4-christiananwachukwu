@@ -1,41 +1,28 @@
-
+import { setLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import productDetails from "./ProductDetails.mjs";
 
-const productContainer = document.querySelector("#product-details");
 
-// Get product ID from URL query string
-const params = new URLSearchParams(window.location.search);
-const productId = params.get("product");
+const dataSource = new ProductData("tents");
 
-const dataSource = new ProductData("tents.json");
+function addProductToCart(product) {
+  // Get existing items in the cart, or start with an empty array
+  let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
 
-async function renderProduct() {
-  if (!productId) {
-    productContainer.innerHTML = "<p>Product not found.</p>";
-    return;
-  }
+  // Add the new product to the array
+  cart.push(product);
 
-  const product = await dataSource.findProductById(productId);
-
-  if (!product) {
-    productContainer.innerHTML = "<p>Product not found in data.</p>";
-    return;
-  }
-
-  productContainer.innerHTML = `
-    <div class="product-detail">
-      <img src="${product.Image}" alt="${product.Name}" class="product-detail__image" />
-      <div class="product-detail__info">
-        <h2>${product.Name}</h2>
-        <h3>${product.Brand?.Name ?? ""}</h3>
-        <p class="product-detail__price">$${product.FinalPrice}</p>
-        <p>${product.DescriptionHtmlSimple}</p>
-        <button id="addToCartBtn">Add to Cart</button>
-      </div>
-    </div>
-  `;
-// console.log('Product loaded successfully!');
-  console.log("Displayed product:", product.Name);
+  // Save the updated array back to localStorage
+  localStorage.setItem("so-cart", JSON.stringify(cart));
 }
 
-renderProduct();
+// add to cart button event handler
+async function addToCartHandler(e) {
+  const product = await dataSource.findProductById(e.target.dataset.id);
+  addProductToCart(product);
+}
+
+// add listener to Add to Cart button
+document
+  .getElementById("addToCart")
+  .addEventListener("click", addToCartHandler);
