@@ -1,4 +1,4 @@
- export default class ProductDetails {
+export default class ProductDetails {
   constructor(productId, dataSource) {
     this.productId = productId;
     this.dataSource = dataSource;
@@ -22,7 +22,7 @@
     let cart = JSON.parse(localStorage.getItem("so-cart")) || [];
     cart.push(this.product);
     localStorage.setItem("so-cart", JSON.stringify(cart));
-    alert`(${this.product.Name} added to cart!)`;
+    alert(`${this.product.Name} added to cart!`);
   }
 
   renderProductDetails() {

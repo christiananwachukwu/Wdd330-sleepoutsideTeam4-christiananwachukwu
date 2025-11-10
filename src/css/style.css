@@ -7,7 +7,6 @@
   --tertiary-color: #8a470c;
   --light-grey: #d0d0d0;
   --dark-grey: #303030;
-
   /* sizes */
   --font-base: 18px;
   --small-font: 0.8em;
@@ -75,7 +74,6 @@ p {
   font-size: var(--small-font);
   width: 110px;
   height: 80px;
-
   flex-direction: column;
   align-items: flex-end;
   box-shadow: 1px 1px 4px var(--light-grey);
@@ -91,7 +89,7 @@ p {
 }
 
 .logo--square > div {
-  margin-top: -1.7em;
+  margin-top: -11.7em;
 }
 
 /* utility classes */
@@ -100,7 +98,7 @@ p {
 }
 
 button {
-  padding: 0.5em 2em;
+  padding: 00.5em 2em;
   background-color: var(--secondary-color);
   color: white;
   margin: auto;
@@ -132,7 +130,6 @@ button {
 }
 
 /* End cart icon styles */
-
 .mission {
   position: absolute;
   top: 1rem;
@@ -192,7 +189,6 @@ button {
 }
 
 /* End product list card */
-
 .product-detail {
   padding: 1em;
   max-width: 500px;
@@ -260,4 +256,30 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+Add CSS
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  align-items: flex-start;
+}
+
+.product-detail__image {
+  max-width: 320px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #ccc;
+}
+
+.product-detail__info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.product-detail__price {
+  font-size: 1.5rem;
+  color: #2a7a2e;
+  margin-top: 0.5rem;
 }
