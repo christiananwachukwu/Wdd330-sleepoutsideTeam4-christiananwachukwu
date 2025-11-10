@@ -1,3 +1,4 @@
+// ProductDetails.mjs
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
 export default class ProductDetails {
@@ -5,21 +6,24 @@ export default class ProductDetails {
     this.productId = productId;
     this.dataSource = dataSource;
     this.product = {};
-    this.discountPercentage = 0.2; // 20%
+    this.discountPercentage = 0.2; // 20% discount
   }
 
   async init() {
     this.product = await this.dataSource.findProductById(this.productId);
     this.renderProductDetails();
-    document
-      .getElementById("addToCart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+
+    const addBtn = document.getElementById("addToCart");
+    if (addBtn) {
+      addBtn.addEventListener("click", this.addProductToCart.bind(this));
+    }
   }
 
   addProductToCart() {
-    const cart = getLocalStorage("so-cart") || [];
+    const cart = getLocalStorage("so-cart");
     cart.push(this.product);
     setLocalStorage("so-cart", cart);
+    alert(`${this.product.NameWithoutBrand} added to cart!`);
   }
 
   calculateDiscountedPrice(price) {
@@ -49,6 +53,7 @@ export default class ProductDetails {
 
     document.getElementById("productColor").textContent =
       product.Colors?.[0]?.ColorName || "N/A";
+
     document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
 
     document.getElementById("addToCart").dataset.id = product.Id;

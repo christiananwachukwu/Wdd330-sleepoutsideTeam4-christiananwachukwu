@@ -1,56 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Product Details</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <script type="module" src="../js/product.js"></script>
-  </head>
-  <body>
-    <header class="divider">
-      <div class="logo">
-        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
-        <a href="../index.html">Sleep<span class="highlight">Outside</span></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Product Details</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script type="module" src="../js/product.js" defer></script>
+</head>
+<body>
+  <header class="divider">
+    <div class="logo">
+      <img src="../images/noun_Tent_2517.svg" alt="Tent logo" />
+      <a href="../index.html">Sleep<span class="highlight">Outside</span></a>
+    </div>
+    <div class="cart">
+      <a href="../cart/index.html">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <path d="M18.9 32.6..." />
+        </svg>
+      </a>
+    </div>
+  </header>
+
+  <main class="divider">
+    <section class="product-detail">
+      <h2 id="productBrand">Brand Name</h2>
+      <h3 id="productName">Product Name</h3>
+      <img id="productImage" src="../images/camping-products.jpg" alt="Product Image" class="divider" />
+
+      <p>
+        <span id="originalPrice"></span>
+        <span id="discountedPrice"></span>
+        <span id="discountBadge"></span>
+      </p>
+
+      <p id="productColor">Color</p>
+      <p id="productDesc">Description</p>
+
+      <div class="product-details_add">
+        <button id="addToCart" data-id="">Add to Cart</button>
       </div>
-      <div class="cart">
-        <a href="../cart/index.html">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <path
-              d="M18.9 32.6h65.8l-9.6 33.8H28.6zM34 75.3a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6zm36.4 0a5.3 5.3 0 1 0 0 10.6 5.3 5.3 0 0 0 0-10.6z"
-            />
-          </svg>
-        </a>
-      </div>
-    </header>
+    </section>
+  </main>
 
-    <main class="divider">
-      <section class="product-detail">
-        <h2 id="productBrand">Brand Name</h2>
-        <h3 class="divider" id="productName">Product Name</h3>
-        <img
-          src="../images/camping-products.jpg"
-          alt="Sleep Outside Camping Products"
-          id="productImage"
-          class="divider"
-        />
-
-        <!-- Discount Display -->
-        <div class="product-detail__price">
-          <span id="originalPrice" class="price--old"></span>
-          <span id="discountedPrice" class="price--new"></span>
-          <span id="discountBadge" class="price--badge"></span>
-        </div>
-
-        <p id="productColor" class="product_color">Color</p>
-        <p id="productDesc" class="product_description">Description</p>
-
-        <div class="product-details_add">
-          <button id="addToCart" data-id="">Add to Cart</button>
-        </div>
-      </section>
-    </main>
-
-    <footer>&copy; NOT a real business</footer>
-  </body>
+  <footer>&copy; NOT a real business</footer>
+</body>
 </html>
