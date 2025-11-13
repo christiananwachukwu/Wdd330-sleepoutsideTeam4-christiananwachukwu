@@ -9,9 +9,21 @@ const product = new ProductDetails(productID, dataSource);
 
 product.init();
 
-const ListPrice = Number(product.ListPrice);
-const FinalPrice = Number(product.FinalPrice);
-const discount = ListPrice - FinalPrice;
-document.querySelector(".product-card_discount").textContent =
-  `You save $${discount.toFixed(2)}`;
+dataSource.findProductById(productID).then(item => {
+  const listPrice = Number(item.ListPrice);
+
+  // Apply an 8% discount
+  const discountAmount = listPrice * 0.08;
+  const finalPrice = listPrice - discountAmount;
+
+  // Display the discount and final price
+  document.querySelector(".product-card_discount").textContent =
+    `You save $${discountAmount.toFixed(2)} (8% off)`;
+  
+  const priceElement = document.querySelector(".product-card_price");
+  if (priceElement) {
+    priceElement.textContent = `$${finalPrice.toFixed(2)}`;
+  }
+});
+
 
