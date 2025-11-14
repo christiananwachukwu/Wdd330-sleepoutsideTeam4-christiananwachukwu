@@ -38,3 +38,31 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+// simple render function that inserts template into parent element
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  let clone = template.content.cloneNode(true);
+  if (callback) clone = callback(clone, data);
+  parent.appendChild(clone);
+}
+async function loadTemplate(path) {
+  const res = await fetch(path);
+  const template = await res.text();
+  return template;
+}
+
+export async function loadHeaderFooter() {
+  const headerPath = "partials/header.html"
+  const footerPath = "../partials/footer.html"
+
+  const headerHTML = await loadTemplate(headerPath);
+  const footerHTML = await loadTemplate(footerPath);
+
+  const headerElement = document.getElementById("main-header");
+  const footerElement = document.getElementById("main-footer");
+
+  renderWithTemplate(headerHTML, headerElement);
+  renderWithTemplate(footerHTML, footerElement);
+}
+  
