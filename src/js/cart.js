@@ -1,7 +1,3 @@
-import { loadHeaderFooter } from "./utils.mjs";
-
-loadHeaderFooter();
-
 import { getLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
