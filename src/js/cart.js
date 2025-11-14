@@ -3,14 +3,14 @@ import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
+  const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".productList").innerHTML = htmlItems.join("");
-
-  //attach event listeners to remove buttons
-  const removeButtons = document.querySelectorAll(".remove");
-  removeButtons.forEach(btn => btn.addEventListener("click", removeItem));
 }
+//   //attach event listeners to remove buttons
+//   const removeButtons = document.querySelectorAll(".remove");
+//   removeButtons.forEach(btn => btn.addEventListener("click", removeItem));
+// }
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
