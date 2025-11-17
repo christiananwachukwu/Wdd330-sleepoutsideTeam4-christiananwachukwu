@@ -4,8 +4,7 @@ import ProductList from "./ProductList.mjs";
 
 loadHeaderFooter();
 
-
-const category = getParam('category');
+const category = getParam("category");
 
 const dataSource = new ProductData();
 
