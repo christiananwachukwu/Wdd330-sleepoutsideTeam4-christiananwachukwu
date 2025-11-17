@@ -1,3 +1,6 @@
+const baseURL = "https://wdd330-backend.onrender.com/";
+console.log('🔍 Base URL:', baseURL);
+ 
 function convertToJson(res) {
   if (res.ok) {
     return res.json();
@@ -5,19 +8,24 @@ function convertToJson(res) {
     throw new Error("Bad Response");
   }
 }
-
+ 
 export default class ProductData {
-  constructor(category) {
-    this.category = category;
-    this.path = `/json/${this.category}.json`;
+  async getData(category) {
+    const fullURL = `${baseURL}products/search/${category}`;
+    console.log('🌐 Full URL being fetched:', fullURL);
+    
+    const response = await fetch(fullURL);
+    console.log('📥 Response:', response);
+    console.log('📥 Response status:', response.status);
+    
+    const data = await convertToJson(response);
+    return data.Result;
   }
-  getData() {
-    return fetch(this.path)
-      .then(convertToJson)
-      .then((data) => data);
-  }
+ 
   async findProductById(id) {
-    const products = await this.getData();
-    return products.find((item) => item.Id === id);
+    const response = await fetch(`${baseURL}product/${id}`);
+    const data = await convertToJson(response);
+    return data.Result;
   }
 }
+ 
