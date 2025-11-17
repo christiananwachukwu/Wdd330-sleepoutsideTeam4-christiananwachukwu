@@ -20,6 +20,16 @@
   box-sizing: border-box;
 }
 
+.main-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  background: #fff;
+  position: sticky;
+}
+
 body {
   font-family: var(--font-body);
   font-size: var(--font-base);
@@ -48,16 +58,19 @@ p {
   font-size: 30px;
   text-align: right;
   font-family: var(--font-headline);
+  align-items: center;
 }
 
 .logo img {
-  width: 60px;
+  width: 40px;
   height: 60px;
 }
 
 .logo a {
   text-decoration: none;
   color: var(--font-body);
+  text-decoration: none;
+  color: #333;
 }
 
 .hero {
@@ -260,4 +273,37 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* SEARCH BAR */
+.search-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#productSearchForm {
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #f9f9f9;
+}
+
+#searchInput {
+  flex: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+}
+
+#productSearchForm button {
+  padding: 10px 10px;
+  margin: 10px;
+  background: #6a0d07;
+  color: rgb(249, 246, 246);
+  border-radius: 60px;
+  cursor: pointer;
 }
