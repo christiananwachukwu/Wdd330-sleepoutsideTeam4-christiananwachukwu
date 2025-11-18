@@ -198,10 +198,23 @@ button {
   max-width: 500px;
   margin: auto;
 }
+.discount-detail-flag {
+  background: #E33812;
+  color: white;
+  padding: 8px 12px;
+  font-size: 1.15rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-left: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+}
 
 .product-detail img {
   width: 100%;
 }
+
 
 /* Start cart list card styles */
 .cart-card {
@@ -239,6 +252,22 @@ button {
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+}
+
+.card-image-wrapper {
+  position: relative;
+}
+
+.discount-flag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 0.9rem;
 }
 
 @media screen and (min-width: 500px) {
