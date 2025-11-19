@@ -1,30 +1,40 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+let cart = [];
 
-loadHeaderFooter();
-
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") || [];
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
+// Function to add item to cart
+function addToCart(product) {
+  const existingProduct = cart.find((item) => item.id === product.id);
+  if (existingProduct) {
+    existingProduct.quantity += 1;
+  } else {
+    product.quantity = 1;
+    cart.push(product);
+  }
+  updateCartUI();
 }
 
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
-  return newItem;
+// Function to update cart UI
+function updateCartUI() {
+  const productList = document.querySelector('.product-list');
+  productList.innerHTML = '';
+  cart.forEach((product) => {
+    const productHTML = `
+      <li>
+        <span>${product.name}</span>
+        <span>Quantity: ${product.quantity}</span>
+        <span>Price: ${product.price}</span>
+      </li>
+    `;
+    productList.insertAdjacentHTML('beforeend', productHTML);
+  });
 }
 
-renderCartContents();
+// Example usage:
+const products = [
+  { id: 1, name: 'Product 1', price: 10.99 },
+  { id: 2, name: 'Product 2', price: 5.99 },
+];
+
+products.forEach((product) => {
+  addToCart(product);
+});
+
