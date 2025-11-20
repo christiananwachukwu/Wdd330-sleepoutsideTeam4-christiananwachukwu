@@ -1,14 +1,13 @@
 import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
-const totalToPay = 0;
-
 loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  document.querySelector(".list-total").innerHTML = `$${calculateTotal(cartItems)}`;
+  document.querySelector(".list-total").innerHTML =
+    `$${calculateTotal(cartItems)}`;
 }
 
 function cartItemTemplate(item) {
@@ -30,11 +29,10 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function calculateTotal(item) {
-  return item.reduce((sum, item) => {
-    return sum + Number(item.FinalPrice);
-  }, 0);
+function calculateTotal(values) {
+  return values
+    .reduce((sum, value) => Number(value.FinalPrice) + sum, 0)
+    .toFixed(2);
 }
 
-
-  renderCartContents();
+renderCartContents();
