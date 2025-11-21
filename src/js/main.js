@@ -1,4 +1,3 @@
-
 // Import utility functions and product modules
 import { loadHeaderFooter } from "./utils.mjs";
 loadHeaderFooter();
