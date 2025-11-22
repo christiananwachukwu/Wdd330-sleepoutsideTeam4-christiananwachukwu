@@ -14,11 +14,47 @@
 
   <body>
     <header class="divider" id="main-header"></header>
-
     <main class="divider">
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
+      <form id="checkoutForm">
+        <label for="fname">First Name:</label>
+        <input type="fname" id= "fname" name="fname" required>
+
+        <label for="lname">Last Name:</label>
+        <input type="lname" id="lname" name="lname" required>
+
+        <label for="street">Street Address:</label> 
+        <input name="street" required>
+
+        <label for="city">City:</label>        
+        <input name="city" required>
+
+        <label for="state">State:</label>
+        <input name="state" required>
+
+        <label for="zip">Zip Code:</label>
+        <input name="zip" id="zip" required>
+
+        <label for="cardNumber">Card Number:</label>
+        <input name="cardNumber" required>
+
+        <label for="expiration">Expiration Date:</label>
+        <input name="expiration" required>
+
+        <label for="code">Security Code:</label>
+        <input name="code" required>
+      
+        <button type="submit">Checkout</button>
+      </form>
+      <div id="order-summary">
+        <p>Subtotal: <span id="subtotal"></span></p>
+        <p>Tax: <span id="tax"></span></p>
+        <p>Shipping: <span id="shipping"></span></p>
+        <p>Total: <span id="orderTotal"></span></p>
+      </div>
+
     </main>
 
     <footer id="main-footer"></footer>
