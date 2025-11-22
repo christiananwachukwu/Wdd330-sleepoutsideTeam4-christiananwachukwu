@@ -259,5 +259,18 @@ button {
 
 footer {
   font-size: var(--small-font);
-  padding: 1em;
+  padding: 1rem;
 }
+
+form label,
+form input {
+  display: block;
+  margin: 0.5rem 2rem;
+  padding: 0.5rem;
+  width: 80%;
+}
+
+/* form input {
+  padding: 0.5rem;
+  width: calc(100% - 4rem);
+} */

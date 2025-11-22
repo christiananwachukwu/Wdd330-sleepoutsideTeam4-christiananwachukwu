@@ -1,6 +1,16 @@
 import { getLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
-import { formDataToJSON } from "./utils.mjs";
+// import { formDataToJSON } from "./utils.mjs";
+
+function formDataToJSON(formElement) {
+    // convert the form data to a JSON object
+    const formData = new FormData(formElement);
+    const convertedJSON = {};
+    formData.forEach((value, key) => {
+        convertedJSON[key] = value;
+    });
+    return convertedJSON;
+}
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {

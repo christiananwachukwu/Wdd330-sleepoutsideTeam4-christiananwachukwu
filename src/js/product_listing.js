@@ -1,5 +1,5 @@
 import { loadHeaderFooter, getParam } from "./utils.mjs";
-import ProductData from "./ProductData.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 import ProductList from "./ProductList.mjs";
 
 loadHeaderFooter();
@@ -13,7 +13,7 @@ loadHeaderFooter();
 //         const categories = ["tents", "sleepingbags", "backpacks", "accessories"]; // all your categories
 //         let allProducts = [];
 
-//         const searchDataSource = new ProductData();
+//         const searchDataSource = new ExternalServices();
 
 //         // Fetch all categories
 //         for (const cat of categories) {
@@ -57,7 +57,7 @@ loadHeaderFooter();
 
 const category = getParam("category");
 
-const dataSource = new ProductData();
+const dataSource = new ExternalServices();
 
 const element = document.querySelector(".product-list");
 
