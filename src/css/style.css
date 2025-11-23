@@ -261,3 +261,64 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Checkout Form Styles */
+#checkout-form {
+  max-width: 350px;
+  margin: 40px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+#checkout-form label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#checkout-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+#checkout-form button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background-color: #0077cc;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#checkout-form button:hover {
+  background-color: #005fa3;
+}
+
+/* Success Page Styles */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px;
+}
+
+h1 {
+  font-size: 28px;
+  color: #0077cc;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #333;
+}

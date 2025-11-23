@@ -6,16 +6,15 @@ function addToCart(product) {
   if (existingProduct) {
     existingProduct.quantity += 1;
   } else {
-    product.quantity = 1;
-    cart.push(product);
+    cart.push({ ...product, quantity: 1 });
   }
   updateCartUI();
 }
 
 // Function to update cart UI
 function updateCartUI() {
-  const productList = document.querySelector('.product-list');
-  productList.innerHTML = '';
+  const productList = document.querySelector(".product-list");
+  productList.innerHTML = "";
   cart.forEach((product) => {
     const productHTML = `
       <li>
@@ -24,17 +23,15 @@ function updateCartUI() {
         <span>Price: ${product.price}</span>
       </li>
     `;
-    productList.insertAdjacentHTML('beforeend', productHTML);
+    productList.insertAdjacentHTML("beforeend", productHTML);
   });
 }
 
 // Example usage:
 const products = [
-  { id: 1, name: 'Product 1', price: 10.99 },
-  { id: 2, name: 'Product 2', price: 5.99 },
+  { id: 1, name: "Product 1", price: 10.99 },
+  { id: 2, name: "Product 2", price: 5.99 },
 ];
-
 products.forEach((product) => {
   addToCart(product);
 });
-
