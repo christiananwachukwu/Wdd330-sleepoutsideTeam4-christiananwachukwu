@@ -10,8 +10,8 @@ const dataSource = new ExternalServices();
 
 const element = document.querySelector(".product-list");
 if (element) {
-    const list = new ProductList(category, dataSource, element);
-    list.init();
+  const list = new ProductList(category, dataSource, element);
+  list.init();
 } else {
-    console.error("Product list container not found in the DOM");
+  /* intentionally empty */
 }

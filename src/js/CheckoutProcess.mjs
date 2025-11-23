@@ -93,19 +93,3 @@ function formDataToJSON(formData) {
   });
   return json;
 }
- 
-// Helper function (REQUIRED for the activity)
-export function packageItems(items) {
-    return items.map(item => ({
-        id: item.Id,
-        name: item.Name,
-        price: item.FinalPrice,
-        quantity: 1 // Assuming 1 since you haven't implemented quantity control yet
-    }));
-}
- 
-// --- INITIALIZATION ---
-// In checkout.mjs, instantiate the class and call init()
-// const checkout = new CheckoutProcess("so-cart", ".checkout-summary");
-// checkout.init();
- 

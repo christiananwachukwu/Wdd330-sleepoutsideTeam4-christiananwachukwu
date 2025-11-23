@@ -85,7 +85,33 @@ export function handleNewsletterSignup() {
         }
     });
 }
+
+export function packageItems(items) {
+  return items.map(item => ({
+    id: item.Id,
+    name: item.Name,
+    price: item.FinalPrice,
+    quantity: 1
+  }));
+}
  
+// --- New function in utils.mjs ---
+export function loadAlerts(message, isError = false) {
+    console.error("ALERT TRIGGERED:", message);
+    const alertList = document.querySelector("#alert-list") || document.createElement('ul');
+    alertList.id = "alert-list";
+    
+    // Simple way to display the message to the user
+    const className = isError ? "alert-error" : "alert-success";
+    alertList.innerHTML = `<li class="${className}">${message}</li>`;
+ 
+    // Ensure it's visible (you may need to append this to your body or header in real code)
+    if (!document.body.contains(alertList)) {
+        document.body.prepend(alertList);
+    }
+}
+
+
 // load header and footer
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partial/header.html");
