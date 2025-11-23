@@ -1,3 +1,5 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { loadHeaderFooter, handleNewsletterSignup } from "./utils.mjs";
 
-loadHeaderFooter();
+loadHeaderFooter(); [span_0]
+(start_span)//[span_0](end_span) -
+handleNewsletterSignup();
