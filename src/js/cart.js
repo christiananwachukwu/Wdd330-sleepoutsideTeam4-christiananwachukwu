@@ -5,9 +5,12 @@ loadHeaderFooter();
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+  const total = calculateTotal(cartItems);
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
   document.querySelector(".list-total").innerHTML =
-    `$${calculateTotal(cartItems)}`;
+    `$${total}`;
+  
+  localStorage.setItem("totalToPay", total);
 }
 
 function cartItemTemplate(item) {
@@ -34,5 +37,6 @@ function calculateTotal(values) {
     .reduce((sum, value) => Number(value.FinalPrice) + sum, 0)
     .toFixed(2);
 }
+
 
 renderCartContents();
