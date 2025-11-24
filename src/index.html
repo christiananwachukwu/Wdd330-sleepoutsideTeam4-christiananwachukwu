@@ -1,65 +1,76 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sleep Outside | Home</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="/js/main.js" type="module"></script>
-  </head>
 
-  <body>
-    <header class="divider" id="main-header"></header>
-    <main class="divider">
-      <div class="hero">
-        <img
-          src="/images/banner-sm.jpg"
-          srcset="images/banner-sm.jpg 500w, images/banner.jpg"
-          alt="image of a high mountain lake"
-        />
-        <div class="logo logo--square">
-          <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
-          <div>Sleep<span class="highlight">Outside</span></div>
-        </div>
-        <div class="mission">
-          <p>
-            Our mission is to provide you with everything you need to sleep
-            outside comfortably at an affordable price.
-          </p>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Home</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/main.js" type="module"></script>
+  <script src="/js/registermodal.js" type="module"></script>
+</head>
+
+<body>
+  <header class="divider" id="main-header"></header>
+  <main class="divider">
+    <div class="hero">
+      <img src="/images/banner-sm.jpg" srcset="images/banner-sm.jpg 500w, images/banner.jpg"
+        alt="image of a high mountain lake" />
+      <div class="logo logo--square">
+        <img src="/images/noun_Tent_2517.svg" alt="tent image for logo" />
+        <div>Sleep<span class="highlight">Outside</span></div>
       </div>
+      <div class="mission">
+        <p>
+          Our mission is to provide you with everything you need to sleep
+          outside comfortably at an affordable price.
+        </p>
+      </div>
+    </div>
 
-      <section class="products">
-        <ul class="product-grid">
-          <li>
-            <a href="/product_listing/index.html?category=tents">
-              <img src="images/tents.svg" alt="tents icon" width="120" />
-              <h2>Tents</h2>
-            </a>
-            <a href="/product_listing/index.html?category=backpacks">
-              <img
-                src="images/backpacks.svg"
-                alt="backpacks icon"
-                width="120"
-              />
-              <h2>Backpacks</h2>
-            </a>
-            <a href="/product_listing/index.html?category=sleeping-bags">
-              <img
-                src="images/sleepingbags.svg"
-                alt="sleepingbags icon"
-                width="120"
-              />
-              <h2>Sleeping Bags</h2>
-            </a>
-            <a href="/product_listing/index.html?category=hammocks">
-              <img src="images/hammocks.svg" alt="hammocks icon" width="120" />
-              <h2>Hammocks</h2>
-            </a>
-          </li>
-        </ul>
-      </section>
-    </main>
-    <footer id="main-footer"></footer>
-  </body>
+    <section class="products">
+      <ul class="product-grid">
+        <li>
+          <a href="/product_listing/index.html?category=tents">
+            <img src="images/tents.svg" alt="tents icon" width="120" />
+            <h2>Tents</h2>
+          </a>
+          <a href="/product_listing/index.html?category=backpacks">
+            <img src="images/backpacks.svg" alt="backpacks icon" width="120" />
+            <h2>Backpacks</h2>
+          </a>
+          <a href="/product_listing/index.html?category=sleeping-bags">
+            <img src="images/sleepingbags.svg" alt="sleepingbags icon" width="120" />
+            <h2>Sleeping Bags</h2>
+          </a>
+          <a href="/product_listing/index.html?category=hammocks">
+            <img src="images/hammocks.svg" alt="hammocks icon" width="120" />
+            <h2>Hammocks</h2>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer id="main-footer"></footer>
+
+  <!-- Registration Modal -->
+  <div id="register-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>⛺Join the Sleep Outside Adventure!</h2>
+      <p>Register with us to get amazing discounts</p>
+
+      <form id="register-form">
+        <label for="name">Your Name</label>
+        <input type="name" id="name" required placeholder="Enter your name" />
+        <label for="reg-email">Email Address</label>
+        <input type="email" id="reg-email" required placeholder="Enter your email" />
+
+        <button type="submit" class="btn">Register Now</button>
+      </form>
+    </div>
+  </div>
+
+
+</body>
+
 </html>
