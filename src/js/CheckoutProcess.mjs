@@ -1,12 +1,37 @@
-import { getLocalStorage } from '.utils.mjs';
-import ExternalService from './ExternalService.mjs';
+import { getLocalStorage } from './utils.mjs';
+import ExternalServices from './ExternalServices.mjs';
 
-const services = new ExternalService();
+
+const services = new ExternalServices();
+
+function formDataToJSON(formElement) {
+    const formData = new FormData(formElement);
+    const convertedJSON = {};
+
+    formData.forEach((value, key) => {
+        convertedJSON[key] = value;
+    });
+    return convertedJSON;
+}
+
+function packageItems(items) {
+    const simpleItems = items.map((item) => {
+        console.log(item);
+        return {
+            id: item.Id,
+            price: item.FinalPrice,
+            name: item.Name,
+            quantity: 1,
+        };
+    });
+    return simpleItems;
+}
+
 
 export default class CheckoutProcess {
     constructor(key, outputSelector) {
         this.key = key;
-        this.outputSelecetor = outputSelector;
+        this.outputSelector = outputSelector;
         this.list = [];
         this.itemTotal = 0;
         this.shipping = 0;
@@ -14,18 +39,20 @@ export default class CheckoutProcess {
         this.orderTotal = 0;
     }
 
-    Infinity() {
-        this.list = getLocalStorage(this.key);
+    init() {
+        this.list = getLocalStorage(this.key) || [];
         this.calculateItemSummary();
+        this.calculateOrderTotal();
+        console.log(this.list);
     }
 
     calculateItemSummary() {
-        const summaryElement = document.querySelector(this.outputSelecetor + "#cartTotal");
-        const itemNumElement = document.querySelector(this.outputSelecetor + "num-items");
+        const summaryElement = document.querySelector(`${this.outputSelector} #cartTotal`);
+        const itemNumElement = document.querySelector(`${this.outputSelector} #num-items`);
         itemNumElement.textContent = this.list.length;
 
-        const amounts = this.list.map((item) => item.finalPrice);
-        this.itemTotal = amounts.reduce((sum, item) => sum + item);
+        const amounts = this.list.map((item) => item.FinalPrice);
+        this.itemTotal = amounts.reduce((sum, item) => sum + item, 0);
         summaryElement.innerText = `$${this.itemTotal.toFixed(2)}`;
     }
 

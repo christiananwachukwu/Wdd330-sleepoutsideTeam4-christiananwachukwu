@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
     <script src="../js/checkout.mjs" type="module"></script>
   </head>
 
@@ -20,7 +20,7 @@
         <h2>Review & Place your Order</h2>
       </section>
       <form name="checkout">
-        <input type="hidden" name="orderDate" id="orderDate">
+        <input type="hidden" name="orderDate" id="orderDate" />
 
         <fieldset>
           <legend>customer info</legend>
@@ -28,7 +28,7 @@
             <label for="fname">first Name: </label>
             <input id="fname" name="fname" type="text" required />
             <label for="lname">last Name: </label>
-          <input id="lname" name="lname" type="text" required />
+            <input id="lname" name="lname" type="text" required />
           </div>
         </fieldset>
         <fieldset>
@@ -49,11 +49,11 @@
           <div class="checkout_payment">
             <legend>payment info</legend>
             <label for="cnum">card number: </label>
-            <input id="cnum" name="cnum" type="number" required />
+            <input id="cnum" name="cnum" type="text" placeholder="1245678598757658" required />
             <label for="expdate">expiration date: </label>
-            <input id="expdate" name="expdate" type="date" required />
+            <input id="expdate" name="expdate" type="text" placeholder="12/09" required />
             <label for="cvv">cvv: </label>
-            <input id="cvv" name="cvv" type="number" required />
+            <input id="cvv" name="cvv" type="text" placeholder="123" />
           </div>
         </fieldset>
 
@@ -75,7 +75,6 @@
 
         <button type="submit" id="checkoutSubmit">place order</button>
       </form>
-     
     </main>
 
     <footer id="main-footer"></footer>
