@@ -63,3 +63,12 @@ export async function loadHeaderFooter() {
 
   rendertWithTemplate(footerTemplate, footerElement);
 }
+
+// export function formDataToJSON(formElement) {
+//   const formData = new FormData(formElement);
+//   const converted = {};
+//   formData.forEach((value, key) => {
+//     converted[key] = value;
+//   });
+//   return converted;
+// }
