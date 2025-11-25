@@ -10,8 +10,8 @@ function convertToJson(res) {
 
 export default class ExternalServices {
   constructor() {
-    // this.category = category;
-    // this.path = `/json/${this.category}.json`;
+    //this.category = category;
+    //this.path = `/json/${this.category}.json`;
   }
   async getData(category) {
     const response = await fetch(`${baseUrl}products/search/${category}`);
@@ -26,19 +26,13 @@ export default class ExternalServices {
     return data.Result;
   }
 
-  async checkout(orderData) {
-    const url = "https://wdd330-backend.onrender.com/checkout";
-
-    const options = {
+  async checkout(payload) {
+    const option = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(orderData)
+      headers: { "content-type": "appliation/json",},
+      body: JSON.stringify(payload),
     };
-
-    const response = await fetch(url, options);
-    return response.json();
+  
+    return await fetch(`${baseUrl}checkout/`, option).then(convertToJson);
   }
-
 }

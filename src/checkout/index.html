@@ -18,42 +18,74 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-      <form id="checkoutForm">
-        <label for="fname">First Name:</label>
-        <input type="fname" id="fname" name="fname" required />
+      <form name="checkout">
+        <input type="hidden" name="orderDate" id="orderDate" />
 
-        <label for="lname">Last Name:</label>
-        <input type="lname" id="lname" name="lname" required />
+        <fieldset>
+          <legend>customer info</legend>
+          <div class="checkout_name">
+            <label for="fname">first Name: </label>
+            <input id="fname" name="fname" type="text" required />
+            <label for="lname">last Name: </label>
+            <input id="lname" name="lname" type="text" required />
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>address</legend>
+          <div class="checkout_address">
+            <label for="street">street Address: </label>
+            <input id="street" name="street" type="text" required />
+            <label for="city">city: </label>
+            <input id="city" name="city" type="text" required />
+            <label for="state">state: </label>
+            <input id="state" name="state" type="text" required />
+            <label for="zip">zip code: </label>
+            <input id="zip" name="zip" type="text" required />
+          </div>
+        </fieldset>
 
-        <label for="street">Street Address:</label>
-        <input name="street" required />
+        <fieldset>
+          <div class="checkout_payment">
+            <legend>payment info</legend>
+            <label for="cnum">card number: </label>
+            <input
+              id="cnum"
+              name="cnum"
+              type="text"
+              placeholder="1245678598757658"
+              required
+            />
+            <label for="expdate">expiration date: </label>
+            <input
+              id="expdate"
+              name="expdate"
+              type="text"
+              placeholder="12/09"
+              required
+            />
+            <label for="cvv">cvv: </label>
+            <input id="cvv" name="cvv" type="text" placeholder="123" />
+          </div>
+        </fieldset>
 
-        <label for="city">City:</label>
-        <input name="city" required />
+        <fieldset class="checkout-summary">
+          <legend>Order Summary</legend>
+          <div class="order__summary">
+            <div>Items</div>
+            <div id="num-items"></div>
+            <div>Subtotal</div>
+            <div id="cartTotal"></div>
+            <div>Tax</div>
+            <div id="tax"></div>
+            <div>Shipping</div>
+            <div id="shipping"></div>
+            <div>Total</div>
+            <div id="orderTotal"></div>
+          </div>
+        </fieldset>
 
-        <label for="state">State:</label>
-        <input name="state" required />
-
-        <label for="zip">Zip Code:</label>
-        <input name="zip" id="zip" required />
-
-        <label for="cardNumber">Card Number:</label>
-        <input name="cardNumber" required />
-
-        <label for="expiration">Expiration Date:</label>
-        <input name="expiration" required />
-
-        <label for="code">Security Code:</label>
-        <input name="code" required />
-
-        <button type="submit">Checkout</button>
+        <button type="submit" id="checkoutSubmit">place order</button>
       </form>
-      <div id="order-summary">
-        <p>Subtotal: <span id="subtotal"></span></p>
-        <p>Tax: <span id="tax"></span></p>
-        <p>Shipping: <span id="shipping"></span></p>
-        <p>Total: <span id="orderTotal"></span></p>
-      </div>
     </main>
 
     <footer id="main-footer"></footer>

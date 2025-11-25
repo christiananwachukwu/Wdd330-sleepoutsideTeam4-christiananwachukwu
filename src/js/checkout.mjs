@@ -1,21 +1,19 @@
 import { loadHeaderFooter } from "./utils.mjs";
-import CheckoutProcess from "./checkoutprocess.mjs";
+import  CheckoutProcess  from "./CheckoutProcess.mjs";
+
 loadHeaderFooter();
 
-const checkoutForm = document.querySelector("#checkoutForm");
-const checkout = new CheckoutProcess("so-cart", "#order-summary");
 
-// Initial calculations
-checkout.calculateSubtotal();
-checkout.calculateOrderTotal();
+const order = new CheckoutProcess("so-cart", ".checkout-summary");
+order.init();
 
-// Form submission handler
-checkoutForm.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    await checkout.checkout(checkoutForm);
-    alert("Order placed successfully!");
-    // To clear the cart and redirect the user
-    localStorage.removeItem(checkout.key);
-    window.location.href = "/thank-you.html";
-});
-console.log("Checkout page JS loaded!");
+document
+    .querySelector("#zip")
+    .addEventListener("blur", order.calculateOrderTotal.bind(order));
+
+document
+    .querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+        e.preventDefault();
+
+        order.checkout();
+    });
